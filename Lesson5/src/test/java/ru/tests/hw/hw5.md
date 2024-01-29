@@ -27,31 +27,42 @@
 _Примерная структура приложения_
 
 * class Contact (int id, String firstName, String lastName, String phone, set, get)
-* class PhoneBookUI(getFirstName(), getLastName(), getPhone(), printMenu(), printAllContacts()) + проверки
-* class PhoneBook (PhoneBookUI, List<Contact>, addContact(), changeContact(), deleteContact())
+* class PhoneBookUI(getFirstName(), getLastName(), getPhone() + проверки, printMenu(),
+  printAllContacts(), getMenuChoice())
+* class PhoneBook (PhoneBookUI, PhoneBookRepository, List<Contact>, addContact(),
+  changeContact(), deleteContact())
 * class PhoneBookRepository (file, add(), change(), delete(), get())
 
 _Юнит-тесты:_
 
-* addContactTest - при добавлении контакта в списке контактов появляется один контакт
+* addContactTest - при добавлении контакта в списке контактов появляется один контакт.
 * (Parameterized) addOkContactIdTest - при добавлении 1 нового контакта в PhoneBook список
   контактов имеет размер = 1, а id последнего контакта = 1. При добавлении 3 - 3 и 3 соответственно.
   В параметрах: массивы данных для создания контактов.
-*
+* (Parameterized) getFirstNameUITest - проверка добавления нескольких строк в качестве
+  имени контакта, метод должен возвращить true, если строка соответствует требованиям к имени,
+  и false, если нет, в т.ч. если строка пустая.
+* printMenuUITest - проверка вывода соответствующей информации по меню
+* (Parameterized) getCorrectMenuChoiceTest - проверка корректности выбора пунктов меню
+* addContactInRepoTest - информация о контакте в установленным виде сохраняется в файле
+* printAllContactsTest - список с 3 контактами отображается корректно
+* 
 
 _Интеграционные тесты:_
 
-* createContactWithUiTest - считывание данных для создания контакта с помощью PhoneBookUI 
-и создание контакта с полученными данными
+* createContactWithUITest - считывание данных для создания контакта с помощью PhoneBookUI
+  и создание контакта с полученными данными
 * addContactInRepositoryTest - добавление контакта в список контактов и запись в файл
+* checkExitFromMenuTest - при выборе последнего пункта меню (выход) приложение корректно
+  завершает работу, закрывается работа с файлом в репозитории
 * 
 
 _Сквозные тесты:_
 
-* runContactFromMenuToRepoTest - выбор в меню добавления контакта, получение данных, запись 
-в списке и в файле. Выбор в меню изменения контакта, соответствующее изменение данных 
-в списке и файле. Далее выбор в меню удаления контакта, удаление соответствующей записи 
-в списке и файле.
+* runContactFromMenuToRepoTest - выбор в меню добавления контакта, получение данных, запись
+  в списке и в файле. Выбор в меню изменения контакта, соответствующее изменение данных
+  в списке и файле. Далее выбор в меню удаления контакта, удаление соответствующей записи
+  в списке и файле.
 
 **_Задание 2_**
 
